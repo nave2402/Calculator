@@ -1,0 +1,69 @@
+Python programming:
+
+from replit import clear
+logo = """
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ `.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ `.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   `._____.'  | || ||____|  |____|| || |  |________|  | || |   `._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|
+"""
+#calc functions
+def Add(n1,n2):
+  return n1 + n2
+def Subtract(n1,n2):
+  return n1 - n2
+def Multiply(n1,n2):
+  return n1 * n2
+def Divide(n1,n2):
+  return n1 / n2
+def PowerOf(n1,n2):
+  return n1 ** n2
+def Modulo(n1,n2):
+  return n1 % n2
+ #Dictionary operation 
+Operations ={
+  "+": Add,
+  "-": Subtract,
+  "*": Multiply,
+  "/": Divide,
+  "^": PowerOf,
+  "%": Modulo,
+}
+
+def calculator():
+  print(logo)
+  num1 = float(input("What's the first number? "))
+  for symbol in Operations:
+    print(symbol)
+  continue_calculate = True
+  while continue_calculate:
+    operation_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the next number? "))
+    Calculation_function = Operations[operation_symbol]
+    answer = Calculation_function(num1,num2) 
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
+    continue_calc = input(f"Type 'y' to continue calculating with {answer}, or type 'ac' to start a new calculation. \n or type 'n' to exit. " ).lower()
+    if continue_calc == "ac":
+      continue_calculate = False
+      clear()
+      calculator()
+    elif continue_calc == "n":
+      clear()
+      print("Goodbye!")
+      continue_calculate = False 
+    else:
+      num1 = answer
+    
+calculator()
+
+
